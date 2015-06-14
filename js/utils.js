@@ -12,10 +12,10 @@
           return $window.localStorage[key] || defaultValue;
         },
         setObject: function (key, value) {
-          $window.localStorage[key] = JSON.stringify(value);
+          $window.localStorage[key] = angular.toJson(value);
         },
         getObject: function (key) {
-          return JSON.parse($window.localStorage[key] || '{}');
+          return angular.fromJson($window.localStorage[key] || '{}');
         }
       };
     }]);

@@ -129,7 +129,7 @@
                     line-height: 20px; align-items: center;
                     position: relative; min-width: 34px; 
                     min-height: 22px; float: left"
-                on-tap="subtractQuantity(item)"
+                on-tap="subtractQuantity(item, $index)"
                 ></button>
                 <div style="float: left; width: 40%; text-align: center">{{item.quantity}}</div>
                 <button class="button button-icon ion-plus"
@@ -152,6 +152,36 @@
               {{vm.total | currency}}
             </div>
           </div>
+        </ion-list>
+        <ion-list>
+          <div class="item item-divider">
+            Inactive List
+          </div>
+          <ion-item ng-repeat="item in vm.inactiveList" style="font-style: italic; background-color: #f5f5f5; color: #999" class="item-button-left">
+            <button class="button button-icon ion-plus" on-tap="activateItem(item, $index)"></button>
+            <div class="row">
+              <div class="col">
+                <div>
+                  {{item.name}}
+                </div>                
+              </div>
+              <div class="col">
+              </div>
+              <div class="col" style="text-align: right">
+                <button class="button button-icon ion-minus-circled"
+                  style="font-size: 18px;
+                    line-height: 20px; align-items: right;
+                    position: relative; min-width: 34px; 
+                    min-height: 22px;"
+                on-tap="deleteItem($index)"
+                ></button>
+              </div>
+              <div class="col" style="text-align: right">
+                {{item.price | currency}}
+              </div>
+            </div>
+          </ion-item>
+          
         </ion-list>
         <div style="height: 100px; width: 1px">
         </div>  
