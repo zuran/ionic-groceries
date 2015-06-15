@@ -12,7 +12,7 @@
           inactiveList: []
         };
 
-        if (!$localstorage.getObject('groceries')) {
+        if (!$localstorage.getObject('groceries') || !$localstorage.getObject('groceries').activeList) {
           $localstorage.setObject('groceries', $scope.vm);
         }
         

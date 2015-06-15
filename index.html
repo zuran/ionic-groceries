@@ -59,6 +59,11 @@
       div.row, div.col {
         padding:0;
       }
+      
+      .item {
+        padding-top: 8px;
+        padding-bottom: 8px;
+      }
     </style>
   </head>
   <body ng-app="groceries" ng-controller="ListCtrl">
@@ -158,7 +163,7 @@
             Inactive List
           </div>
           <ion-item ng-repeat="item in vm.inactiveList" style="font-style: italic; background-color: #f5f5f5; color: #999" class="item-button-left">
-            <button class="button button-icon ion-plus" on-tap="activateItem(item, $index)"></button>
+            <button class="button button-icon ion-plus" on-tap="activateItem(item, $index)" style="margin-top: -7px"></button>
             <div class="row">
               <div class="col">
                 <div>
