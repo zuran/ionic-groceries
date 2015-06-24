@@ -73,20 +73,18 @@
           <div class="item item-divider">
             Inactive List
           </div>
-          <ion-item ng-repeat="item in vm.inactiveList" style="font-style: italic; background-color: #f5f5f5; color: #999" class="item-button-left">
+          <ion-item ng-repeat="item in vm.inactiveList" class="item-button-left list-item inactive-item" can-swipe="true">
+           <ion-option-button class="button button-assertive icon ion-trash-a list-button" on-tap="deleteItem($index)"></ion-option-button>
             <button class="button button-icon ion-plus" on-tap="activateItem(item, $index)" style="margin-top: -7px"></button>
             <div class="row">
-              <div class="col">
+              <div class="col col-left">
                 <div>
                   {{item.name}}
                 </div>                
               </div>
               <div class="col">
               </div>
-              <div class="col" style="text-align: right">
-                <button class="button button-icon ion-minus-circled list-button"
-                on-tap="deleteItem($index)"
-                ></button>
+              <div class="col">
               </div>
               <div class="col" style="text-align: right">
                 {{item.price | currency}}
