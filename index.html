@@ -7,6 +7,7 @@
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/groceries.css" rel="stylesheet">
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -24,50 +25,8 @@
     <script src="js/utils.js"></script>
     <script src="js/controllers.js"></script>
     
-    <style>
-      .float-button {
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        border-radius: 50%;
-        width: 52px;
-        padding: 26px;
-        font-size: 60px;
-        position: fixed;
-        bottom: 30px; /* Adjust to where you want it */
-        right: 25px; /* Adjust to where you want it */
-        z-index: 9999;
-        background-color: #fff;
-        -webkit-box-shadow: 0px 5px 5px 0px rgba(170,170,170,1);
-        -moz-box-shadow: 0px 5px 5px 0px rgba(170,170,170,1);
-        box-shadow: 0px 5px 5px 0px rgba(170,170,170,1);
-      }
-
-      .float-button .height_fix {
-        margin-top: 100%;
-      }
-
-      .float-button .content {
-        position: absolute;
-        left: -23%;
-        top: 50%;
-        height: 100%;
-        width: 100%;
-        text-align: center;
-        margin-top: -30px; /* Note, this must be half the font size */
-      }
-      
-      div.row, div.col {
-        padding:0;
-      }
-      
-      .item {
-        padding-top: 8px;
-        padding-bottom: 8px;
-      }
-    </style>
   </head>
   <body ng-app="groceries" ng-controller="ListCtrl">
-
     <ion-pane>
       <ion-header-bar align-title="center" class="bar-balanced">
         <h1 class="title">
@@ -80,47 +39,6 @@
           <div class="item item-divider">
             Active List
           </div>
-<!--
-          <ion-item class="item-button-right item-button-left" 
-                    ng-repeat="item in vm.activeList">
-            <span>{{item.name}}</span>
-            <button class="button button-icon ion-minus"></button>
-            <div class="buttons">
-              {{item.price | currency}}
-            </div>
-          </ion-item>
-          <ion-item class="item-button-left" ng-repeat="item in vm.activeList">
-            <button class="button button-icon ion-minus"></button>
-            <div style="float: left">
-              {{item.name}}
-            </div>
-            <div style="float: left">
-              {{item.quantity}}
-            </div>
-            <div style="float: right">
-              {{item.price * item.quantity | currency}}
-            </div>
-          </ion-item>
-          
--->
-<!--
-          <ion-item ng-repeat="item in vm.activeList" 
-             class="item-button-left">
-            <button class="button button-icon ion-minus"></button>
-            <div class="row">
-              <div class="col">
-                {{item.name}}
-              </div>
-              <div class="col" style="text-align: right">
-                {{item.quantity}}
-              </div>
-              <div class="col" style="text-align: right">
-                {{item.price * item.quantity | currency}}
-              </div>
-            </div>
-          </ion-item>
-          
--->
           <ion-item ng-repeat="item in vm.activeList">
             <div class="row">
               <div class="col">
@@ -129,19 +47,12 @@
                 </div>                
               </div>
               <div class="col" style="text-align: right">
-              <button class="button button-icon ion-minus"
-                  style="font-size: 18px;
-                    line-height: 20px; align-items: center;
-                    position: relative; min-width: 34px; 
-                    min-height: 22px; float: left"
+              <button class="button button-icon ion-minus list-button"
                 on-tap="subtractQuantity(item, $index)"
                 ></button>
                 <div style="float: left; width: 40%; text-align: center">{{item.quantity}}</div>
-                <button class="button button-icon ion-plus"
-                  style="font-size: 18px;
-                    line-height: 20px; align-items: center;
-                    position: relative; min-width: 34px; 
-                    min-height: 22px;"
+                <button class="button button-icon ion-plus list-button"
+                  
                 on-tap="addQuantity(item)"
                 ></button>
               </div>
@@ -173,11 +84,7 @@
               <div class="col">
               </div>
               <div class="col" style="text-align: right">
-                <button class="button button-icon ion-minus-circled"
-                  style="font-size: 18px;
-                    line-height: 20px; align-items: right;
-                    position: relative; min-width: 34px; 
-                    min-height: 22px;"
+                <button class="button button-icon ion-minus-circled list-button"
                 on-tap="deleteItem($index)"
                 ></button>
               </div>
