@@ -84,5 +84,5 @@ div.col {
 }
 
 .item-options .button {
-  min-width: 34px;
+  min-width: 0;
 }

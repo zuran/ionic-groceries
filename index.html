@@ -75,6 +75,7 @@
           </div>
           <ion-item ng-repeat="item in vm.inactiveList" class="item-button-left list-item inactive-item" can-swipe="true">
            <ion-option-button class="button button-assertive icon ion-trash-a list-button" on-tap="deleteItem($index)"></ion-option-button>
+           <ion-option-button class="button button-positive icon ion-edit list-button" on-tap=""></ion-option-button>
             <button class="button button-icon ion-plus" on-tap="activateItem(item, $index)" style="margin-top: -7px"></button>
             <div class="row">
               <div class="col col-left">
