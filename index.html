@@ -39,19 +39,21 @@
           <div class="item item-divider">
             Active List
           </div>
-          <ion-item ng-repeat="item in vm.activeList">
+          <ion-item ng-repeat="item in vm.activeList" on-hold="editClicked($index, vm.activeList)">
             <div class="row">
               <div class="col">
                 <div>
                   {{item.name}}
                 </div>                
               </div>
-              <div class="col" style="text-align: right">
-              <button class="button button-icon ion-minus list-button"
+              <div class="col">
+              </div>
+              <div class="col" style="padding-left: 60px">
+              <button class="button button-icon ion-arrow-down-c list-button quantity-button"
                 on-tap="subtractQuantity(item, $index)"
                 ></button>
                 <div style="float: left; width: 40%; text-align: center">{{item.quantity}}</div>
-                <button class="button button-icon ion-plus list-button"
+                <button class="button button-icon ion-arrow-up-c list-button quantity-button"
                   
                 on-tap="addQuantity(item)"
                 ></button>
@@ -73,10 +75,9 @@
           <div class="item item-divider">
             Inactive List
           </div>
-          <ion-item ng-repeat="item in vm.inactiveList" class="item-button-left list-item inactive-item" can-swipe="true">
+          <ion-item ng-repeat="item in vm.inactiveList" class="item-button-left list-item inactive-item" can-swipe="true" on-hold="editClicked($index, vm.inactiveList)">
            <ion-option-button class="button button-assertive icon ion-trash-a list-button" on-tap="deleteItem($index)"></ion-option-button>
-           <ion-option-button class="button button-positive icon ion-edit list-button" on-tap=""></ion-option-button>
-            <button class="button button-icon ion-plus" on-tap="activateItem(item, $index)" style="margin-top: -7px"></button>
+            <button class="button button-icon ion-arrow-up-c" on-tap="activateItem(item, $index)" style="margin-top: -7px"></button>
             <div class="row">
               <div class="col col-left">
                 <div>

@@ -47,7 +47,7 @@ div.col {
   position: relative;
   min-height: 22px;
   float: left;
-  max-height: 50px
+  max-height: 50px;
 }
 
 .list-item {
@@ -85,4 +85,11 @@ div.col {
 
 .item-options .button {
   min-width: 0;
+}
+
+.quantity-button {
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 4px;
+  margin-right: 4px;
 }
