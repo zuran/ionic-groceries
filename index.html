@@ -20,6 +20,7 @@
     <script src="js/ng-cordova.min.js"></script>
     <script src="cordova.js"></script>
 
+   
     <!-- your app's js -->
     <script src="js/app.js"></script>
     <script src="js/utils.js"></script>
@@ -39,31 +40,8 @@
           <div class="item item-divider">
             Active List
           </div>
-          <ion-item ng-repeat="item in vm.activeList" on-hold="editClicked($index, vm.activeList)">
-            <div class="row">
-              <div class="col">
-                <div>
-                  {{item.name}}
-                </div>                
-              </div>
-              <div class="col">
-              </div>
-              <div class="col" style="padding-left: 60px">
-              <button class="button button-icon ion-arrow-down-c list-button quantity-button"
-                on-tap="subtractQuantity(item, $index)"
-                ></button>
-                <div style="float: left; width: 40%; text-align: center">{{item.quantity}}</div>
-                <button class="button button-icon ion-arrow-up-c list-button quantity-button"
-                  
-                on-tap="addQuantity(item)"
-                ></button>
-              </div>
-              <div class="col" style="text-align: right">
-                {{item.price * item.quantity | currency}}
-              </div>
-            </div>
+          <ion-item ng-repeat="item in vm.activeList" on-hold="editClicked($index, vm.activeList)" active-list-item>
           </ion-item>
-          
           <div class="item item-divider item-button-right">
             <div style="height: 30px"></div>
             <div class="buttons">
@@ -75,25 +53,8 @@
           <div class="item item-divider">
             Inactive List
           </div>
-          <ion-item ng-repeat="item in vm.inactiveList" class="item-button-left list-item inactive-item" can-swipe="true" on-hold="editClicked($index, vm.inactiveList)">
-           <ion-option-button class="button button-assertive icon ion-trash-a list-button" on-tap="deleteItem($index)"></ion-option-button>
-            <button class="button button-icon ion-arrow-up-c" on-tap="activateItem(item, $index)" style="margin-top: -7px"></button>
-            <div class="row">
-              <div class="col col-left">
-                <div>
-                  {{item.name}}
-                </div>                
-              </div>
-              <div class="col">
-              </div>
-              <div class="col">
-              </div>
-              <div class="col" style="text-align: right">
-                {{item.price | currency}}
-              </div>
-            </div>
+          <ion-item ng-repeat="item in vm.inactiveList" class="item-button-left list-item inactive-item" can-swipe="true" on-hold="editClicked($index, vm.inactiveList)" inactive-list-item>
           </ion-item>
-          
         </ion-list>
         <div style="height: 100px; width: 1px">
         </div>  
@@ -106,5 +67,48 @@
         </span>
       </div>
     </ion-pane>
+    
+    <script id="active-list-item.html" type="text/ng-template">
+      <div class="row">
+        <div class="col">
+          <div>
+            {{item.name}}
+          </div>                
+        </div>
+        <div class="col">
+        </div>
+        <div class="col" style="padding-left: 60px">
+        <button class="button button-icon ion-arrow-down-c list-button quantity-button"
+          on-tap="subtractQuantity(item, $index)"
+          ></button>
+          <div style="float: left; width: 40%; text-align: center">{{item.quantity}}</div>
+          <button class="button button-icon ion-arrow-up-c list-button quantity-button"
+          on-tap="addQuantity(item)"
+          ></button>
+        </div>
+        <div class="col" style="text-align: right">
+          {{item.price * item.quantity | currency}}
+        </div>
+      </div>
+    </script>      
+
+    <script id="inactive-list-item.html" type="text/ng-template">
+      <ion-option-button class="button button-assertive icon ion-trash-a list-button" on-tap="deleteItem($index)"></ion-option-button>
+      <button class="button button-icon ion-arrow-up-c" on-tap="activateItem(item, $index)" style="margin-top: -7px"></button>
+      <div class="row">
+        <div class="col col-left">
+          <div>
+            {{item.name}}
+          </div>                
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col" style="text-align: right">
+          {{item.price | currency}}
+        </div>
+      </div>
+    </script>
   </body>
 </html>

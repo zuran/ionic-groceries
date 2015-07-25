@@ -148,5 +148,15 @@
         
         
         
-      }]);
+      }])
+  .directive('activeListItem', function() {
+    return {
+      templateUrl: 'active-list-item.html'
+    };
+  })
+  .directive('inactiveListItem', function() {
+    return {
+      templateUrl: 'inactive-list-item.html'
+    };
+  });
 }());
