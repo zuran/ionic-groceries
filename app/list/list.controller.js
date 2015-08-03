@@ -3,7 +3,7 @@
   "use strict";
   
   angular
-    .module('groceries', ['ionic', 'ionic.utils'])
+    .module('groceries')
     .controller('ListCtrl', ['$scope', '$localstorage', '$ionicPopup', '$filter',
       function ($scope, $localstorage, $ionicPopup, $filter) {
 
@@ -148,15 +148,5 @@
         
         
         
-      }])
-  .directive('activeListItem', function() {
-    return {
-      templateUrl: 'active-list-item.html'
-    };
-  })
-  .directive('inactiveListItem', function() {
-    return {
-      templateUrl: 'inactive-list-item.html'
-    };
-  });
+      }]);
 }());

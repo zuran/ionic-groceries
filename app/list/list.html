@@ -1,0 +1,37 @@
+<ion-view view-title="Groceries">
+  <ion-content>
+    <ion-list>
+      <div class="item item-divider">
+        Active List
+      </div>
+      <ion-item ng-repeat="item in vm.activeList" on-hold="editClicked($index, vm.activeList)" active-item>
+      </ion-item>
+      <div class="item item-divider item-button-right">
+        <div style="height: 30px"></div>
+        <div class="buttons">
+          {{vm.total | currency}}
+        </div>
+      </div>
+    </ion-list>
+    <ion-list>
+      <div class="item item-divider">
+        Inactive List
+      </div>
+      <ion-item ng-repeat="item in vm.inactiveList" class="item-button-left list-item inactive-item" can-swipe="true" on-hold="editClicked($index, vm.inactiveList)" inactive-item>
+      </ion-item>
+    </ion-list>
+    <div style="height: 100px; width: 1px">
+    </div>  
+  </ion-content>
+  <div class="float-button">
+    <span class="height-fix">
+      <a class="content button-clear" on-tap="addClicked()">
+        <i class="button-icon ion-plus-circled positive"></i>
+      </a>
+    </span>
+  </div>
+</ion-view>
+         
+
+         
+
