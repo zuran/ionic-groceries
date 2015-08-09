@@ -1,0 +1,16 @@
+<ion-option-button class="button button-assertive icon ion-trash-a list-button" on-tap="deleteItem($index)"></ion-option-button>
+<button class="button button-icon ion-arrow-up-c" on-tap="activateItem(item, $index)" style="margin-top: -7px"></button>
+<div class="row">
+  <div class="col col-left">
+    <div>
+      {{item.name}}
+    </div>                
+  </div>
+  <div class="col">
+  </div>
+  <div class="col">
+  </div>
+  <div class="col" style="text-align: right">
+    {{item.price | currency}}
+  </div>
+</div>

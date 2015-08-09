@@ -20,91 +20,18 @@
     <script src="js/ng-cordova.min.js"></script>
     <script src="cordova.js"></script>
 
+   
     <!-- your app's js -->
-    <script src="js/app.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="js/controllers.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/utilities/localstorage.js"></script>
+    <script src="app/list/list.js"></script>
+    <script src="app/list/list.controller.js"></script>
     
   </head>
-  <body ng-app="groceries" ng-controller="ListCtrl">
-    <ion-pane>
-      <ion-header-bar align-title="center" class="bar-balanced">
-        <h1 class="title">
-          Groceries
-          <i class="icon ion-bag padding-horizontal"></i>
-        </h1>
-      </ion-header-bar>
-      <ion-content>
-        <ion-list>
-          <div class="item item-divider">
-            Active List
-          </div>
-          <ion-item ng-repeat="item in vm.activeList" on-hold="editClicked($index, vm.activeList)">
-            <div class="row">
-              <div class="col">
-                <div>
-                  {{item.name}}
-                </div>                
-              </div>
-              <div class="col">
-              </div>
-              <div class="col" style="padding-left: 60px">
-              <button class="button button-icon ion-arrow-down-c list-button quantity-button"
-                on-tap="subtractQuantity(item, $index)"
-                ></button>
-                <div style="float: left; width: 40%; text-align: center">{{item.quantity}}</div>
-                <button class="button button-icon ion-arrow-up-c list-button quantity-button"
-                  
-                on-tap="addQuantity(item)"
-                ></button>
-              </div>
-              <div class="col" style="text-align: right">
-                {{item.price * item.quantity | currency}}
-              </div>
-            </div>
-          </ion-item>
-          
-          <div class="item item-divider item-button-right">
-            <div style="height: 30px"></div>
-            <div class="buttons">
-              {{vm.total | currency}}
-            </div>
-          </div>
-        </ion-list>
-        <ion-list>
-          <div class="item item-divider">
-            Inactive List
-          </div>
-          <ion-item ng-repeat="item in vm.inactiveList" class="item-button-left list-item inactive-item" can-swipe="true" on-hold="editClicked($index, vm.inactiveList)">
-           <ion-option-button class="button button-assertive icon ion-trash-a list-button" on-tap="deleteItem($index)"></ion-option-button>
-            <button class="button button-icon ion-arrow-up-c" on-tap="activateItem(item, $index)" style="margin-top: -7px"></button>
-            <div class="row">
-              <div class="col col-left">
-                <div>
-                  {{item.name}}
-                </div>                
-              </div>
-              <div class="col">
-              </div>
-              <div class="col">
-              </div>
-              <div class="col" style="text-align: right">
-                {{item.price | currency}}
-              </div>
-            </div>
-          </ion-item>
-          
-        </ion-list>
-        <div style="height: 100px; width: 1px">
-        </div>  
-      </ion-content>
-      <div class="float-button">
-        <span class="height-fix">
-          <a class="content button-clear" on-tap="addClicked()">
-            <i class="button-icon ion-plus-circled positive"></i>
-          </a>
-        </span>
-      </div>
-    </ion-pane>
+  <body ng-app="groceries">
+    <ion-nav-bar class="bar-balanced">
+      <ion-nav-back-button></ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-nav-view></ion-nav-view>
   </body>
 </html>
