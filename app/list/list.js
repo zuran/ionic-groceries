@@ -17,13 +17,13 @@
   
   function activeItem() {
     return {
-      templateUrl: '/app/list/active-item.directive.html'
+      templateUrl: 'app/list/active-item.directive.html'
     };
   }
   
   function inactiveItem() {
     return {
-      templateUrl: '/app/list/inactive-item.directive.html'
+      templateUrl: 'app/list/inactive-item.directive.html'
     };
   }
 })();

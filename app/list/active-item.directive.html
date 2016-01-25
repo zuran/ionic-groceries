@@ -7,13 +7,13 @@
   <div class="col">
   </div>
   <div class="col" style="padding-left: 60px">
-  <button class="button button-icon ion-arrow-down-c list-button quantity-button"
-    on-tap="subtractQuantity(item, $index)"
-    ></button>
+    <button class="button button-icon ion-arrow-down-c list-button quantity-button"
+      on-tap="subtractQuantity(item, $index)">
+    </button>
     <div style="float: left; width: 40%; text-align: center">{{item.quantity}}</div>
     <button class="button button-icon ion-arrow-up-c list-button quantity-button"
-    on-tap="addQuantity(item)"
-    ></button>
+      on-tap="addQuantity(item)">
+    </button>
   </div>
   <div class="col" style="text-align: right">
     {{item.price * item.quantity | currency}}

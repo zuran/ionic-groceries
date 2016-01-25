@@ -4,14 +4,16 @@
   
   angular
     .module('groceries')
-    .controller('ListCtrl', ['$scope', '$localstorage', '$ionicPopup', '$filter',
-      function ($scope, $localstorage, $ionicPopup, $filter) {
+    .controller('ListCtrl', ['$scope', '$localstorage', '$ionicPopup', '$filter', 'dataService',
+      function ($scope, $localstorage, $ionicPopup, $filter, dataService) {
 
         $scope.vm = {
           activeList: [],
           inactiveList: []
         };
 
+        //$localstorage.setObject('groceries', {});
+        
         if (!$localstorage.getObject('groceries') ||
             !$localstorage.getObject('groceries').activeList) {
           $localstorage.setObject('groceries', $scope.vm);
@@ -33,6 +35,44 @@
         }
         
         $scope.vm = $localstorage.getObject('groceries');
+
+        var test = dataService.getStoreItemDatabase();
+        test.find({
+          success: function (results) {
+            mergeTemplate(results);
+          },
+          error: function (error) {
+            var a = 1;
+          }
+        });
+
+        function mergeTemplate(storeItems) {
+          var i = 0, j = 0, k = 0;
+          for (i = 0; i < storeItems.length; i++) {
+            var itemName = storeItems[i].get('name'),
+                itemPrice = storeItems[i].get('price'),
+                exists = false;
+            
+            for (j = 0; j < $scope.vm.activeList.length; j++) {
+              if($scope.vm.activeList[j].name === itemName) {
+                exists = true;
+                break;
+              }
+            }
+            
+            for (k = 0; k < $scope.vm.inactiveList.length; k++) {
+              if($scope.vm.inactiveList[k].name === itemName) {
+                exists = true;
+                break;
+              }
+            }
+            
+            if(exists) continue;
+            $scope.vm.inactiveList.push({name: itemName, price: itemPrice, quantity: 1});
+          }
+          $scope.vm.inactiveList = $filter('orderBy')($scope.vm.inactiveList, 'name');
+          $localstorage.setObject('groceries', $scope.vm);
+        }
         
         function getTotal() {
           var total = 0;
@@ -83,7 +123,7 @@
           };
           
           var popup = $ionicPopup.show({
-            template: '<label class="item item-input"><span class="input-label">Item Name</span><input ng-model="newItem.name" type="text"></label><label class="item item-input"><span class="input-label">Price</span><input ng-model="newItem.price" type="number"></label>',
+            templateUrl: 'app/list/add-item.template.html',
             title: 'Add Item',
             scope: $scope,
             buttons: [
@@ -117,9 +157,7 @@
           
           
           var popup = $ionicPopup.show({
-            template: '<label class="item item-input"><span class="input-label">Item Name</span><input ng-model="newItem.name' +
-              '" type="text"></label><label class="item item-input"><span class="input-label">Price</span><input ng-model="newItem.price' +
-              '" type="number"></label>',
+            templateUrl: 'app/list/add-item.template.html',
             title: 'Edit Item',
             scope: $scope,
             buttons: [
